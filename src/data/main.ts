@@ -1,3 +1,18 @@
+export interface Tag {
+  title: string;
+  color: string;
+}
+
+export interface BabysitterProfile {
+  id: number;
+  name: string;
+  title: string;
+  content: string;
+  score: number;
+  pay: number;
+  tags: Tag[];
+  profile: string;
+}
 export const mainData = [
   {
     id: 0,
