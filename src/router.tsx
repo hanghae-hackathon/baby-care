@@ -6,6 +6,8 @@ import EntryPage from "pages/Entry";
 import ServicePage from "pages/Service";
 import SplashPage from "pages/Splash";
 import { createBrowserRouter } from "react-router-dom";
+import LoadingPage from "pages/Service/Loading";
+import HakdaeDemoPage from "pages/Hakdae";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: "service",
         element: <ServicePage />,
+      },
+      {
+        path: "service/finding",
+        element: <LoadingPage />,
+      },
+      {
+        path: "hakdae",
+        element: <HakdaeDemoPage />,
       },
       {
         path: "a",

@@ -28,9 +28,11 @@ const Checkbox = forwardRef<
   return (
     <Wrapper>
       <input ref={ref} type="checkbox" {...inputProps} />
-      <BigButton>{children}</BigButton>
+      <BigButton style={{ pointerEvents: "none" }}>{children}</BigButton>
     </Wrapper>
   );
 });
+
+export const RadioButton = styled(Checkbox).attrs({ type: "radio" })``;
 
 export default Checkbox;

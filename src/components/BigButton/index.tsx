@@ -21,6 +21,7 @@ const BigButton = styled.button`
   border: none;
 
   color: ${({ theme }) => theme.colors.common.black};
+  margin-bottom: 4px;
 `;
 
 export default BigButton;

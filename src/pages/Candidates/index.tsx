@@ -1,4 +1,7 @@
+import AnimatedTitle from "components/AnimatedTitle";
+import { mainData } from "data/main";
 import { Link } from "react-router-dom";
+import { TypeAnimation } from "react-type-animation";
 import styled from "styled-components";
 
 const Wrapper = styled(Link)`
@@ -20,19 +23,19 @@ const Wrapper = styled(Link)`
   text-decoration: none;
   color: inherit;
 `;
-const Lists = styled.div`
+const List = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `;
-const List = styled.div`
+const ListItem = styled.div`
   width: 100%;
-  height: 100px;
+  height: auto;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
   display: flex;
-  padding: 4px 12px;
+  padding: 8px 12px;
   align-items: center;
   gap: 12px;
 
@@ -84,7 +87,12 @@ const CommentWrapper = styled.div`
   align-items: center;
   & > span {
     font-size: 14px;
-    color: #333;
+    color: #ffffff;
+    display: inline-block;
+    background-color: #52a9da;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
   }
 `;
 export default function Candidates() {
@@ -92,48 +100,39 @@ export default function Candidates() {
   return (
     <Wrapper to={`/detail/${id}`}>
       <h1>AI를 통해 추천할 베이비 시터를 찾았어요!</h1>
-      <Lists>
-        <List>
-          <Profile src="/elder.webp" alt="images" />
-          <div>
-            <Content>
-              "안녕하세요. 저는 50대 중반 여성입니다. 아이들과 잘 어울리고
-              친절한 성격을 가지고 있습니다."
-            </Content>
-            <CommentWrapper>
-              <span>Why?</span>
-              <Comment>경험이 풍부하며 친절한 성격 입니다.</Comment>
-            </CommentWrapper>
-          </div>
-        </List>
-        <List>
-          <Profile src="/elder.webp" alt="images" />
-          <div>
-            <Content>
-              "안녕하세요. 저는 50대 중반 여성입니다. 아이들과 잘 어울리고
-              친절한 성격을 가지고 있습니다."
-            </Content>
-            <CommentWrapper>
-              <span>Why ?</span>
-              <Comment>경험이 풍부하며 친절한 성격 입니다.</Comment>
-            </CommentWrapper>
-          </div>
-        </List>
-        <List>
-          <Profile src="/elder.webp" alt="images" />
-          <div>
-            <Content>
-              "안녕하세요. 저는 50대 중반 여성입니다. 아이들과 잘 어울리고
-              친절한 성격을 가지고 있습니다."
-            </Content>
-            <CommentWrapper>
-              <span>Why ?</span>
-              <Comment>경험이 풍부하며 친절한 성격 입니다.</Comment>
-            </CommentWrapper>
-          </div>
-        </List>
-      </Lists>
-      <Button>둘러보기</Button>
+      <List>
+        <AnimatedTitle duration={0.7}>
+          {mainData.slice(0, 3).map((data, index) => {
+            return (
+              <ListItem>
+                <Profile src={data.profile} alt="images" />
+                <div>
+                  <Content>{data.content}</Content>
+                  <CommentWrapper>
+                    <span>AI 추천이유</span>
+                    <Comment>
+                      <TypeAnimation
+                        sequence={[800 * index, data.title]}
+                        speed={50}
+                        repeat={0}
+                        cursor={false}
+                      />
+                    </Comment>
+                  </CommentWrapper>
+                </div>
+              </ListItem>
+            );
+          })}
+        </AnimatedTitle>
+      </List>
+      <Link
+        to="/main"
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
+      >
+        <Button>직접 찾아볼래요</Button>
+      </Link>
     </Wrapper>
   );
 }

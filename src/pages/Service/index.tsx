@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "react-calendar/dist/Calendar.css";
 import BigButton from "components/BigButton";
-import Checkbox from "components/Checkbox";
+import Checkbox, { RadioButton } from "components/Checkbox";
+import Button from "components/Button";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -24,12 +25,26 @@ const Wrapper = styled.div`
     min-height: 80vh;
   }
 
-  & input {
+  & input,
+  & textarea {
     width: 100%;
     padding: 16px;
     border-radius: 24px;
     border: 1px solid #000000;
+    resize: none;
   }
+`;
+
+const BottomWrapper = styled.div`
+  width: 100%;
+  max-width: 393px;
+  height: auto;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px;
+  min-height: 0 !important;
 `;
 
 function ServicePage() {
@@ -106,9 +121,9 @@ function ServicePage() {
             </AnimatedTitle>
           </h2>
           <AnimatedTitle delay={1.5} duration={0.1}>
-            <BigButton>오전(08:00~13:00)</BigButton>
-            <BigButton>오후(13:00~18:00)</BigButton>
-            <BigButton>저녁(16:00~20:00)</BigButton>
+            <RadioButton name="time">오전(08:00~13:00)</RadioButton>
+            <RadioButton name="time">오후(13:00~18:00)</RadioButton>
+            <RadioButton name="time">저녁(16:00~20:00)</RadioButton>
           </AnimatedTitle>
         </div>
       )}
@@ -127,9 +142,9 @@ function ServicePage() {
             </AnimatedTitle>
           </h2>
           <AnimatedTitle delay={1.5} duration={0.1}>
-            <BigButton>1명</BigButton>
-            <BigButton>2명</BigButton>
-            <BigButton>3명 이상</BigButton>
+            <RadioButton name="pax">1명</RadioButton>
+            <RadioButton name="pax">2명</RadioButton>
+            <RadioButton name="pax">3명 이상</RadioButton>
           </AnimatedTitle>
         </div>
       )}
@@ -148,10 +163,10 @@ function ServicePage() {
             </AnimatedTitle>
           </h2>
           <AnimatedTitle delay={1.5} duration={0.1}>
-            <BigButton>0~1세</BigButton>
-            <BigButton>2~4세</BigButton>
-            <BigButton>5~7세</BigButton>
-            <BigButton>8세 이상</BigButton>
+            <RadioButton name="age">0~1세</RadioButton>
+            <RadioButton name="age">2~4세</RadioButton>
+            <RadioButton name="age">5~7세</RadioButton>
+            <RadioButton name="age">8세 이상</RadioButton>
           </AnimatedTitle>
         </div>
       )}
@@ -171,6 +186,45 @@ function ServicePage() {
             <Checkbox>🚗 운전이 필요해요.</Checkbox>
           </AnimatedTitle>
         </div>
+      )}
+
+      {step > 4 && (
+        <div>
+          <h2>
+            <AnimatedTitle>
+              <div>😍 마지막 단계에요!</div>
+              <div>추가로 설명이 필요한 것들을 줄글로 남겨주세요.</div>
+              <small>
+                남겨주신 글을 토대로 AI가 최적의 베이비시터를 찾아줘요.
+              </small>
+            </AnimatedTitle>
+          </h2>
+          <AnimatedTitle delay={1.5} duration={0.1}>
+            <textarea
+              rows={15}
+              placeholder="주의사항, 아이가 좋아하는 것, 아이가 싫어하는 것..."
+            />
+          </AnimatedTitle>
+        </div>
+      )}
+
+      {step > 5 && <div />}
+
+      {step > 3 && (
+        <BottomWrapper>
+          <Button
+            onClick={() => {
+              nextStep();
+              setTimeout(() => {
+                if (step >= 5) {
+                  navigate("/service/finding");
+                }
+              }, 1000);
+            }}
+          >
+            다음
+          </Button>
+        </BottomWrapper>
       )}
     </Wrapper>
   );
