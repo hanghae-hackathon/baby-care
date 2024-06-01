@@ -23,8 +23,11 @@
 <br/>
 출산율 저하 문제는 자녀 양육에 대한 부담과 아이 돌보미 부족에서 비롯되며, 베이비시터의 신뢰성 문제도 영향을 미칩니다. 아이 돌봄 아동 수에 비해 돌보미가 부족하여 부모들이 어려움을 겪고 있으며, 신뢰할 수 있는 베이비시터를 찾는 데 어려움이 있습니다. 노인 일자리 창출의 어려움도 해결이 필요한 중요한 문제입니다.
 
-## 🔑 LLM 기반의 베이비시터 매칭
+## 🔑 LLM 기반의 베이비시터 매칭 기능
 
+<img width="585" alt="스크린샷 2024-06-01 오후 2 47 47" src="https://github.com/hanghae-hackathon/baby-care/assets/37887690/71a9e225-5a1a-48b4-bf36-cfe29d6b734a">
 
+## 📷 DEMO
 
+https://drive.google.com/drive/folders/1nBAztGyp_AAMIl6G49TK-BIbg0YkIVy4?usp=sharing
 
