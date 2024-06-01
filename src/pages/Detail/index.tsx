@@ -1,6 +1,7 @@
-import { mainData } from "data/main";
+import { BASE_URL } from "constant";
+import { BabysitterProfile, mainData } from "data/main";
 import Tag from "pages/Main/Tag";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdArrowBack } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -70,7 +71,7 @@ const Modal = styled.div`
   width: 400px;
   height: 180px;
   position: fixed;
-  border: 1px solid #333;
+  border: 1px solid rgb(226 232 240);
   background-color: #fff;
   border-radius: 8px;
   top: 50%;
@@ -85,6 +86,10 @@ const Modal = styled.div`
     font-size: 20px;
     font-weight: 500;
   }
+
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
 `;
 
 const Button = styled.button`
@@ -107,9 +112,11 @@ const Button = styled.button`
 
 export default function Detail() {
   const { id } = useParams<{ id: string }>();
-  const data = mainData[Number(id) ?? 0];
   const router = useNavigate();
   const [open, setOpen] = useState(false);
+  const data = mainData.find(
+    (item) => item.id === Number(id),
+  ) as BabysitterProfile;
   return (
     <Wrapper>
       <Cursor>
@@ -136,7 +143,7 @@ export default function Detail() {
       {open && (
         <Modal>
           <h1>신청 완료 되었습니다.</h1>
-          <Button onClick={() => router(-1)}>확인</Button>
+          <Button onClick={() => setOpen(false)}>확인</Button>
         </Modal>
       )}
     </Wrapper>

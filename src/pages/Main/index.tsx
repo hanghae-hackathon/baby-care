@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import List from "./List";
-import { mainData } from "data/main";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { mainData } from "../../data/main";
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -38,6 +38,7 @@ const Input = styled.input`
 export default function Main() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+
   useEffect(() => {
     setValue("");
   }, [open]);
