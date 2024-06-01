@@ -1,6 +1,9 @@
 import MainLayout from "layout/mainLayout";
 import Detail from "pages/Detail";
 import Main from "pages/Main";
+import EntryPage from "pages/Entry";
+import ServicePage from "pages/Service";
+import SplashPage from "pages/Splash";
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -10,7 +13,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div />,
+        element: <SplashPage />,
+      },
+      {
+        path: "entry",
+        element: <EntryPage />,
+      },
+      {
+        path: "service",
+        element: <ServicePage />,
       },
       {
         path: "a",

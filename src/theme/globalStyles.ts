@@ -19,6 +19,11 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Pretendard', sans-serif;
     box-sizing: border-box;
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 export default GlobalStyles;
